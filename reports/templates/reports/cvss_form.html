@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CVSS Calculator</title>
+    <link rel="stylesheet" href="{% static 'reports/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h2>CVSS Risk Calculator</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label>Attack Vector</label>
+        <select name="av">
+            <option value="N">Network</option>
+            <option value="A">Adjacent</option>
+            <option value="L">Local</option>
+            <option value="P">Physical</option>
+        </select>
+
+        <label>Attack Complexity</label>
+        <select name="ac">
+            <option value="L">Low</option>
+            <option value="H">High</option>
+        </select>
+
+        <label>Privileges Required</label>
+        <select name="pr">
+            <option value="N">None</option>
+            <option value="L">Low</option>
+            <option value="H">High</option>
+        </select>
+
+        <label>User Interaction</label>
+        <select name="ui">
+            <option value="N">None</option>
+            <option value="R">Required</option>
+        </select>
+
+        <label>Scope</label>
+        <select name="s">
+            <option value="U">Unchanged</option>
+            <option value="C">Changed</option>
+        </select>
+
+        <label>Confidentiality</label>
+        <select name="c">
+            <option value="N">None</option>
+            <option value="L">Low</option>
+            <option value="H">High</option>
+        </select>
+
+        <label>Integrity</label>
+        <select name="i">
+            <option value="N">None</option>
+            <option value="L">Low</option>
+            <option value="H">High</option>
+        </select>
+
+        <label>Availability</label>
+        <select name="a">
+            <option value="N">None</option>
+            <option value="L">Low</option>
+            <option value="H">High</option>
+        </select>
+
+        <button type="submit">Generate Report</button>
+    </form>
+</div>
+
+</body>
+</html>

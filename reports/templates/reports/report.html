@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CVSS Report</title>
+    <link rel="stylesheet" href="{% static 'reports/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h2>CVSS Risk Severity Report</h2>
+
+    <div class="report-box">
+        <p><strong>Vector:</strong> {{ vector }}</p>
+        <p><strong>Score:</strong> {{ score }}</p>
+
+        <p class="severity {{ severity|lower }}">
+            Severity: {{ severity }}
+        </p>
+
+        <div class="report-box">
+            <h3>OWASP Top 10 Mapping</h3>
+
+            <p><strong>OWASP ID:</strong> {{ owasp.id }}</p>
+            <p><strong>Category:</strong> {{ owasp.name }}</p>
+            <p><strong>Description:</strong> {{ owasp.description }}</p>
+            
+            <h3>Real-World Example</h3>
+        
+            <p><strong>Vulnerability Type:</strong> {{ example.title }}</p>
+            <p><strong>Example:</strong> {{ example.example }}</p>
+            <p><strong>Impact:</strong> {{ example.impact }}</p>
+            <p><strong>Recommended Fix:</strong> {{ example.fix }}</p>
+        </div>
+        
+    </div>
+
+    <a href="/pdf/?vector={{ vector }}&score={{ score }}&severity={{ severity }}">
+        Download PDF
+    </a>
+</div>
+
+</body>
+</html>
