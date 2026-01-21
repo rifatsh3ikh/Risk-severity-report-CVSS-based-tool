@@ -4,14 +4,18 @@ body {
     margin: 0;
     padding: 0;
 }
-
 .container {
-    width: 500px;
-    margin: 60px auto;
+    max-width: 900px;
+    margin: 100px auto;
     background: #ffffff;
-    padding: 30px;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 h2 {
@@ -26,22 +30,27 @@ label {
     color: #555;
 }
 
-select {
+select,
+input,
+button {
+    margin-top: 25px;
     width: 100%;
-    padding: 8px;
-    margin-top: 6px;
+    padding: 12px;
+    font-size: 16px;
+}
+
+button {
+    cursor: pointer;
+}
+select {
     border-radius: 4px;
     border: 1px solid #ccc;
 }
 
 button {
-    margin-top: 25px;
-    width: 100%;
-    padding: 10px;
     background: #007bff;
     color: #fff;
     border: none;
-    font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -95,4 +104,74 @@ h3 {
 }
 .report-box p {
     margin: 6px 0;
+}
+
+.cvss-vector {
+    display: block;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+@media (max-width: 425px) {
+    .container {
+        padding: 16px;
+    }
+
+    h1, h2 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    select,
+    input,
+    button {
+        font-size: 15px;
+        padding: 10px;
+    }
+}
+
+
+@media (max-width: 375px) {
+    h1, h2 {
+        font-size: 18px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    select,
+    input,
+    button {
+        font-size: 14px;
+        padding: 9px;
+    }
+
+    form {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 320px) {
+    h1, h2 {
+        font-size: 16px;
+    }
+
+    label {
+        font-size: 13px;
+    }
+
+    select,
+    input,
+    button {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .container {
+        padding: 10px;
+    }
 }

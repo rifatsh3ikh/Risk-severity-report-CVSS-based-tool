@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <title>CVSS Report</title>
     <link rel="stylesheet" href="{% static 'reports/style.css' %}">
 </head>
@@ -11,8 +12,11 @@
     <h2>CVSS Risk Severity Report</h2>
 
     <div class="report-box">
-        <p><strong>Vector:</strong> {{ vector }}</p>
-        <p><strong>Score:</strong> {{ score }}</p>
+        <p>
+            <strong>Vector:</strong>
+            <span class="cvss-vector">{{ vector }}</span>
+          </p>
+          
 
         <p class="severity {{ severity|lower }}">
             Severity: {{ severity }}

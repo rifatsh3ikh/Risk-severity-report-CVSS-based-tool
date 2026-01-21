@@ -54,16 +54,24 @@ OWASP_MAPPING = {
 }
 
 
+from django.shortcuts import render
+from cvss import CVSS3
+
 def cvss_form(request):
+    # Handle GET request (just show the form)
+    if request.method == "GET":
+        return render(request, 'reports/cvss_form.html')
+
+    # Handle POST request (calculate CVSS)
     if request.method == "POST":
-        av = request.POST['av']
-        ac = request.POST['ac']
-        pr = request.POST['pr']
-        ui = request.POST['ui']
-        s  = request.POST['s']
-        c  = request.POST['c']
-        i  = request.POST['i']
-        a  = request.POST['a']
+        av = request.POST.get('av')
+        ac = request.POST.get('ac')
+        pr = request.POST.get('pr')
+        ui = request.POST.get('ui')
+        s  = request.POST.get('s')
+        c  = request.POST.get('c')
+        i  = request.POST.get('i')
+        a  = request.POST.get('a')
 
         vector = f"CVSS:3.1/AV:{av}/AC:{ac}/PR:{pr}/UI:{ui}/S:{s}/C:{c}/I:{i}/A:{a}"
 
@@ -74,13 +82,13 @@ def cvss_form(request):
         example = VULNERABILITY_EXAMPLES.get(severity, {})
         owasp = OWASP_MAPPING.get(severity, {})
 
-    return render(request, 'reports/report.html', {
-        'vector': vector,
-        'score': score,
-        'severity': severity,
-        'example': example,
-        'owasp': owasp
-})
+        return render(request, 'reports/report.html', {
+            'vector': vector,
+            'score': score,
+            'severity': severity,
+            'example': example,
+            'owasp': owasp,
+        })
 
 
     return render(request, 'reports/cvss_form.html')
